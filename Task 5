@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int n, i, flag;
+
+    printf("Enter the number of elements in the permutation!\n");
+    scanf("%d", &flag);
+
+    printf("Enter the number of elements in the permutation!\n");
+    scanf("%d", &n);
+
+    if(flag==2){ //the product of permutations
+        int p1[n], p2[n], p12[n];
+        printf("Enter permutations!\n");
+        for(i=0; i<n; i++){
+            scanf("%d", p1+i);
+        }
+        for(i=0; i<n; i++){
+            scanf("%d", p2+i);
+        }
+        for(i=0; i<n; i++){
+            p12[i] = p1[p2[i]-1];
+        }
+        printf("p12:\n");
+        for(i=0; i<n; i++){
+            printf("%d ", p12[i]);
+        }
+    }
+
+    else{ //reverse permutation
+        int p[n], r[n];
+        printf("Enter permutation!\n");
+        for(i=0; i<n; i++){
+            scanf("%d", p+i);
+        }
+        for(i=0; i<n; i++){
+            r[p[i]-1] = i+1;
+        }
+        printf("Reverse permutation:\n");
+        for(i=0; i<n; i++){
+            printf("%d ", r[i]);
+        }
+    }
+    return 0;
+}
