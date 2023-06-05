@@ -29,7 +29,7 @@ int main()
     int colored [n];
     for(i=0; i<n; i++)
         colored[i]=0;
-    int k=1; //öâåò òåêóùåé êîìïîíåíòû ñâÿçíîñòè
+    int k=1; //Ã¶Ã¢Ã¥Ã² Ã²Ã¥ÃªÃ³Ã¹Ã¥Ã© ÃªÃ®Ã¬Ã¯Ã®Ã­Ã¥Ã­Ã²Ã» Ã±Ã¢Ã¿Ã§Ã­Ã®Ã±Ã²Ã¨
     for(i=0; i<n; i++){
         if(!colored[i]){
             //cout << "Vertex " << i << " is coloured!" << endl;
