@@ -6,12 +6,12 @@ using namespace std;
 
 int main()
 {
-    setlocale(LC_ALL, "rus");
+    setlocale(LC_ALL, "rus"); //Хочу выводить текст на русском
     int n, e;
     int i, j, q;
-    ifstream in("gc_20_1");
-    in >> n >> e;
-    bool A[n][n];
+    ifstream in("gc_20_1"); //Открываю файл для чтения
+    in >> n >> e; //Считываю число вершин и кол-во ребер
+    bool A[n][n]; //Создаю матрицу смежности
     for(i=0; i<n; i++){
         for(q=0; q<i; q++)
             A[i][q] = 0;
@@ -19,20 +19,20 @@ int main()
         for(q=i+1; q<n; q++)
             A[i][q] = 0;
     }
-    for(q=0; q<e; q++){
+    for(q=0; q<e; q++){//Ставлю единички, если ребро существует
         in >> i >> j;
         A[i][j] = 1;
         A[j][i] = 1;
     }
     in.close();
-    cout << n << endl;
+    cout << n << endl; //для себя
     int colored [n];
     for(i=0; i<n; i++)
         colored[i]=0;
-    int k=1; //öâåò òåêóùåé êîìïîíåíòû ñâÿçíîñòè
+    int k=1; //цвет текущей компоненты связности
     for(i=0; i<n; i++){
         if(!colored[i]){
-            //cout << "Vertex " << i << " is coloured!" << endl;
+            //cout << "Vertex " << i << " is coloured!" << endl; //осталосm уловие для другого if
         //else{
             colored[i] = k;
             while(true){
@@ -49,7 +49,7 @@ int main()
             k++;
         }
     }
-    cout << k-1;
+    cout << k-1; // выводим кол-во цветов
     return 0;
     }
 
