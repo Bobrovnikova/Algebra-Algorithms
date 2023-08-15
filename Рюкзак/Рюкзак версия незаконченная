@@ -1,0 +1,79 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+#include <vector>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+using namespace std;
+
+int main()
+{
+    string S[18] = {"ks_4_0", "ks_19_0", "ks_10000_0",
+    "ks_1000_0", "ks_100_0", "ks_100_1", "ks_100_2",
+    "ks_200_0", "ks_200_1", "ks_300_0", "ks_30_0",
+    "ks_400_0", "ks_40_0", "ks_45_0", "ks_500_0",
+    "ks_50_0", "ks_50_1", "ks_60_0"};
+    ifstream f("МВШ");
+    ofstream res("result");
+    res << "Test       " << "МВШ    " << "ВАБ " << "%" << endl;
+    int n, K;
+    int i, k, it, it2, a, b;
+    for(it=0; it<18; it++){
+    f >> it2;
+    ifstream in(S[it]); //Открываю файл для чтения
+    in >> n >> K; //Считываю число предметов и вместимость рюкзака
+    cout << "Number of items: " << n << ";" << endl << "Backpack capacity: " << K << ";" << endl;
+    vector <int> W, P;
+    vector<vector<int>> F;
+
+    for(i=0; i<n; i++){
+            in >> a >> b;
+            P.push_back(a);
+            W.push_back(b);
+    }
+    for(i: ){
+            cout << P[i] << " " << W[i] << endl;
+    }
+    cout << endl;
+    in.close();
+    for(i=1; i<=n; i++){
+        for(k=1; k<=K; k++){
+        if (k >= W[i-1])
+            F[i][k] = max(F[i - 1][k], F[i - 1][k - W[i-1]] + P[i-1]);
+        else
+            F[i][k] = F[i - 1][k];
+        }
+    }
+
+    for(i=0; i<=n; i++){
+        for(k=0; k<=K; k++)
+                cout << F[i][k] << " ";
+        cout << endl;
+    }
+    cout << "The cost of items in a backpack: " << F[n][K]<< endl;
+
+    k = K;
+    vector <bool> Ans;
+    for (i=n+1; i>0; i--){
+    if (F[i][k] != F[i - 1][k]){
+        Ans[i-1] = 1;
+        k -= W[i-1];
+    }
+    else
+        Ans[i-1] = 0;
+    }
+    for (bool j: Ans)
+            cout << j<< " ";
+    cout << endl;
+    res << S[it] << "   " << it2 << "   " << F[n][K] << "   " << 100*(it2 - F[n][K])/it2 << endl;
+    F.clear();
+    P.clear();
+    W.clear();
+   }
+
+    f.close();
+    res.close();
+    return 0;
+}
