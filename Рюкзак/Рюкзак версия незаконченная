@@ -13,18 +13,19 @@ int main()
     "ks_200_0", "ks_200_1", "ks_300_0", "ks_30_0",
     "ks_400_0", "ks_40_0", "ks_45_0", "ks_500_0",
     "ks_50_0", "ks_50_1", "ks_60_0"};
-    //ifstream f("МВШ");
-    //ofstream res("result");
+    ifstream f("МВШ");
+    ofstream res;
+    res.open("result", ios_base::app);
     ifstream in;
     //res << "Test       " << "МВШ    " << "ВАБ " << "%" << endl;
     int n, K;
     int i, k, it, it2;
 
-   // for(it=0; it<18; it++){
+    //for(it=0; it<18; it++){
 
-    it = 1;
-    //for(i=0; i<=it; i++)
-      //  f >> it2;
+    it = 17;
+    for(i=0; i<=it; i++)
+        f >> it2;
     //cout << "Mihail: "  << it2 << ";"  << endl;
     in.open(S[it]); //Открываю файл для чтения
     in >> n >> K; //Считываю число предметов и вместимость рюкзака
@@ -62,13 +63,13 @@ int main()
     for (bool j: Ans)
             cout << j<< " ";
     cout << endl;
-    //res << S[it] << "   " << it2 << "   " << F[n][K] << "   " << 100*(it2 - F[n][K])/it2 << endl;
+    res << S[it] << "   " << it2 << "   " << F[n][K] << "   " << 100*(it2 - F[n][K])/it2 << endl;
 
     in.close();
     in.clear();
    //}
 
-    //f.close();
-    //res.close();
+    f.close();
+    res.close();
     return 0;
 }
